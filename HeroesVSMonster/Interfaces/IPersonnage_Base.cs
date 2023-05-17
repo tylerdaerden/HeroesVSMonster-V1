@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HeroesVSMonster.Models
+namespace HeroesVSMonster.Interfaces
 {
-    public class Monstres : GameEntity
+    internal class ICharacter
     {
-
-
-
     }
 }

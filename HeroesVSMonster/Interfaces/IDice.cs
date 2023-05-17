@@ -8,6 +8,7 @@ namespace HeroesVSMonster.Interfaces
 {
     public interface IDice
     {
+        // à voir si je garde l'interface
 
         //public int Throw(); public IEnumerable<int> Throw(int nbDice);
 
