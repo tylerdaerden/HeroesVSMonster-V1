@@ -8,9 +8,20 @@ namespace HeroesVSMonster.Interfaces
 {
     public interface IDice
     {
-        // à voir si je garde l'interface
+        #region Props
+        public int Minimum { get; }
+        public int Maximum { get; }
 
-        //public int Throw(); public IEnumerable<int> Throw(int nbDice);
+        #endregion
+
+
+
+        public int LanceDes()
+        {
+            Random RngDes = new Random();
+            return RngDes.Next(Minimum, Maximum + 1);
+        }
+        public IEnumerable<int> LancerMultiple(int nbDes);
 
     }
 }

@@ -13,6 +13,7 @@ namespace HeroesVSMonster.Models
         public int Minimum { get; init; }
         public int Maximum { get; init; }
 
+
         #endregion
 
         #region Constructeurs
@@ -30,8 +31,15 @@ namespace HeroesVSMonster.Models
             Random RngDes = new Random();
             return RngDes.Next(Minimum, Maximum + 1);
         }
-        #endregion
 
+
+        public IEnumerable<int> LancerMultiple(int nbDes)
+        {
+            List<int> deslist = new List<int>(); for (int i = 0; i <= nbDes; i++) { deslist.Add(Random.Shared.Next(Minimum, Maximum)); }
+            return deslist;
+
+        }
+        #endregion
     }
 
 }

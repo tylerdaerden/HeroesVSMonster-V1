@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace HeroesVSMonster.Models
 {
-    public abstract class GameEntity : IDice
+    public abstract class GameEntity : IPersonnage_Base
     {
+
+        // Je ne vais pas garder cette classe , elle a servi de brouillon 
         #region Props
 
         public int Endurance { get; init; }
@@ -19,23 +21,20 @@ namespace HeroesVSMonster.Models
 
         #region Constructeurs
 
-        public GameEntity(int endurance, int force, int pv)
+        public GameEntity()
         {
-            //Modificateurs à appliquer : 
-            // si carac < 5 mod = -1 , si < 10 mod = 0 ,si < 15 mod = +1 , else mod = +2
 
-            Endurance = endurance;
-            Force = force;
-            PV = pv;
-        }
-
+            Dés d6 = new Dés(1, 6);
+            Endurance = CalculStats(d6);
+            Force = CalculStats(d6);
+            PV = CalculStats(d6);
+        }        
         #endregion
 
 
         #region Méthodes
 
-
-        public int CalculStats(Dés d6)
+         int CalculStats(Dés d6)
         {
             List<int> _4D6 = new List<int>();
 
@@ -49,6 +48,9 @@ namespace HeroesVSMonster.Models
             _4D6.RemoveAt(0); // Comme ça je supprime le plus petit résultat
 
             int best3D6 = _4D6.Sum();
+
+            //Modificateurs à appliquer : 
+            // si carac < 5 mod = -1 , si < 10 mod = 0 ,si < 15 mod = +1 , else mod = +2
 
             if (best3D6 <5 ) 
             {
@@ -70,15 +72,6 @@ namespace HeroesVSMonster.Models
         }
 
         #endregion
-
-
-
-
-
-
-
-
-
     }
 }
 
