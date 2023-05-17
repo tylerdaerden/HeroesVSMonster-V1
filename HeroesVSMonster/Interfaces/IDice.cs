@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace HeroesVSMonster.Interfaces
 {
-    public interface IDice
+    public interface IDice // à voir si je garde
     {
         #region Props
-        public int Minimum { get; }
         public int Maximum { get; }
 
         #endregion
@@ -18,8 +17,7 @@ namespace HeroesVSMonster.Interfaces
 
         public int LanceDes()
         {
-            Random RngDes = new Random();
-            return RngDes.Next(Minimum, Maximum + 1);
+            return Random.Shared.Next(Maximum) + 1;
         }
         public IEnumerable<int> LancerMultiple(int nbDes);
 

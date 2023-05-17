@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HeroesVSMonster.Models
 {
-    public class Monstres : IPersonnage_Base
+    public class Monstres : Personnage_Base
     {
         #region Props
 
@@ -21,7 +21,7 @@ namespace HeroesVSMonster.Models
 
         public Monstres()
         {
-            Dés d6 = new Dés(1, 6);
+            Dés d6 = new Dés(6);
             Endurance = CalculStats(d6);
             Force = CalculStats(d6);
             PV = CalculStats(d6);

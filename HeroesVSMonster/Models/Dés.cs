@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HeroesVSMonster.Models
 {
-    public class Dés : IDice
+    public class Dés  // : IDice voir si je garde l'interface later
     {
         #region Props
         public int Minimum { get; init; }
@@ -18,32 +18,40 @@ namespace HeroesVSMonster.Models
 
         #region Constructeurs
 
-        public Dés(int minimum, int maximum)
+        public Dés(int maximum)
         {
-            Maximum = maximum;
-            Minimum = minimum;
+            Maximum = maximum; 
         }
         #endregion
 
         #region Méthode
         public int LanceDes()
         {
-            Random RngDes = new Random();
-            return RngDes.Next(Minimum, Maximum + 1);
+            return Random.Shared.Next(Maximum) + 1;
         }
 
 
         public IEnumerable<int> LancerMultiple(int nbDes)
         {
-            List<int> deslist = new List<int>(); for (int i = 0; i <= nbDes; i++) { deslist.Add(Random.Shared.Next(Minimum, Maximum)); }
+            List<int> deslist = new List<int>(); 
+            for (int i = 0; i < nbDes; i++) 
+            { 
+                deslist.Add(Random.Shared.Next(Maximum) + 1);
+                Console.WriteLine(deslist[i]);
+            }
             return deslist;
 
+        }
+
+        public static int CalculStats()
+        {
+            return Enumerable.Range(0, 4).Select(v  => Random.Shared.Next(6)+1 ).OrderByDescending(v => v).Take(3).Sum();
         }
         #endregion
     }
 
 }
-        // Suggestion de Chris
+        // Peut être à remettre ? je met de côté en attendant
 
         //public class Dice : IDice
         //{

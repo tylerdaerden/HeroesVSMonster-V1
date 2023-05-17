@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HeroesVSMonster.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,14 +8,38 @@ using static System.Collections.Specialized.BitVector32;
 
 namespace HeroesVSMonster.Interfaces
 {
-    public interface IPersonnage_Base
+     public abstract class Personnage_Base
     {
-        public int Endurance { get; }
-        public int Force { get; }
-        public int PV { get; }
+
+        private int _baseEnd;
+        private int _baseFor;
+        public int PV { get; private set; }
+
+        public Race? Race { get; private set; }
+
+        public Personnage_Base()
+        {
+            _baseEnd = Dés.CalculStats();
+            _baseFor = Dés.CalculStats();
+            Repos();
 
 
-        public string frappe()
+
+        }
+
+        protected void Repos()
+        {
+            PV = _baseEnd + Modificateur(_baseEnd);            
+        }
+
+        private int Modificateur(int end) 
+        {
+            return (end < 5) ? -1 : (end < 10) ? 0 : (end < 15) ? 1 : 2; 
+        }
+
+
+
+        public string frappe() // mis en string temporairement!!!
         {
             //à implémenter
 
