@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HeroesVSMonster.Models
 {
-    public class Monstres : Personnage_Base
+    internal abstract class Monstres : Personnage_Base
     {
         #region Props
 
